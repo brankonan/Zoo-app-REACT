@@ -1,50 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 
 function AnimalList() {
-  const items = [
+  const [items, setItems] = useState([
     {
-      id: 1,
       vrsta: "ptica",
       ime: "orao",
       datum: new Date().toLocaleDateString(),
     },
     {
-      id: 2,
       vrsta: "riba",
       ime: "pirana",
       datum: new Date().toLocaleDateString(),
     },
     {
-      id: 3,
       vrsta: "sisar",
       ime: "medved",
       datum: new Date().toLocaleDateString(),
     },
     {
-      id: 4,
       vrsta: "gmizavac",
       ime: "zmija",
       datum: new Date().toLocaleDateString(),
     },
     {
-      id: 5,
       vrsta: "vodozemac",
       ime: "dazdevnjak",
       datum: new Date().toLocaleDateString(),
     },
     {
-      id: 6,
       vrsta: "covek",
       ime: "covek",
       datum: null,
     },
-  ];
+  ]);
+  const removeItem = (index) => {
+    console.log("lakjdf", items.length);
+    const newItems = [...items];
+    newItems.slice();
+    setItems(newItems);
+    console.log(items.length);
+  };
   return (
     <div>
       <ul>
-        {items.map((item) => (
-          <li key={item.id}>
+        {items.map((item, index) => (
+          <li key={index}>
             {item.vrsta},{item.ime},{item.datum ? item.datum : "Nepoznat"}
+            <button onClick={() => removeItem(index)}>Remove</button>
           </li>
         ))}
       </ul>
