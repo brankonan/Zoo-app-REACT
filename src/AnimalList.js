@@ -32,13 +32,19 @@ function AnimalList() {
       ime: "dazdevnjak",
       datum: new Date().toLocaleDateString(),
     },
+    {
+      id: 6,
+      vrsta: "covek",
+      ime: "covek",
+      datum: null,
+    },
   ];
   return (
     <div>
       <ul>
         {items.map((item) => (
           <li key={item.id}>
-            {item.vrsta},{item.ime},{item.datum}
+            {item.vrsta},{item.ime},{item.datum ? item.datum : "Nepoznat"}
           </li>
         ))}
       </ul>
