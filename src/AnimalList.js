@@ -34,22 +34,42 @@ function AnimalList() {
     },
   ]);
   const removeItem = (index) => {
-    console.log("lakjdf", items.length);
-    const newItems = [...items];
-    newItems.slice();
+    // console.log("lakjdf", items.length);
+    const newItems = items.filter((item, i) => i !== index);
+    // newItems.slice();
     setItems(newItems);
-    console.log(items.length);
-  };
+    // console.log(items.length);
+
+    const moveToTop = (index) => {
+        const 
+    }
+};
   return (
     <div>
-      <ul>
-        {items.map((item, index) => (
-          <li key={index}>
-            {item.vrsta},{item.ime},{item.datum ? item.datum : "Nepoznat"}
-            <button onClick={() => removeItem(index)}>Remove</button>
-          </li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Vrsta</th>
+            <th>Ime</th>
+            <th>Datum</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((item, index) => (
+            <tr key={index}>
+              <td>{item.vrsta}</td>
+              <td>{item.ime}</td>
+              <td>{item.datum ? item.datum : "Nepoznat"}</td>
+              <td>
+                <button onClick={() => removeItem(index)}>Remove</button>
+              </td>
+              <td>
+                <button onClick={() => moveToTop(index)}>Move-To-Top</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
