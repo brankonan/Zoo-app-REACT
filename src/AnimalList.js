@@ -37,7 +37,11 @@ function AnimalList() {
     vrsta: "",
     ime: "",
     datum: "",
+    sektor: "",
   });
+
+  const [sektori] = useState(["Ptice", "Ribe", "Sisavci", "Gmizavci", "Vodozemci", "Čovek"]);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -87,6 +91,20 @@ function AnimalList() {
               setNewAnimal({ ...newAnimal, datum: e.target.value })
             }
           />
+          <label htmlFor="sektor">Sektor</label>
+          <select
+            id="sektor"
+            name="sektor"
+            value={newAnimal.sektor}
+            onChange={(e) =>
+              setNewAnimal({ ...newAnimal, sektor: e.target.value })
+            }
+          >
+            <option value="" disabled>Odaberite sektor</option>
+            {sektori.map((sektor, index) => (
+              <option key={index} value={sektor}>{sektor}</option>
+            ))}
+          </select>
           <button>Add-Animal</button>
         </form>
       </div>
@@ -104,6 +122,7 @@ function AnimalList() {
               <td>{item.vrsta}</td>
               <td>{item.ime}</td>
               <td>{item.datum ? item.datum : "Nepoznat"}</td>
+              <td>{item.sektor}</td>
               <td>
                 <button onClick={() => removeItem(index)}>Remove</button>
               </td>
